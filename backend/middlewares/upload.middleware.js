@@ -15,7 +15,7 @@
     },
     filename: (req, file, cb) => {
       const ext = path.extname(file.originalname);
-      cb(null, `${Date.now()}-${Math.random().toString(36).slice(2)}${ext}`);
+      cb("null", `${Date.now()}-${Math.random().toString(36).slice(2)}${ext}`);
     },
   });
 

@@ -22,35 +22,35 @@ const getAll = async (req, res) => {
     const safeOrder = sortOrder.toUpperCase() === 'ASC' ? 'ASC' : 'DESC';
     const offset = (parseInt(page) - 1) * parseInt(limit);
 
-    const where = {};
-    if (search) {
-      where.name = { [Op.like]: `%${search}%` };
-    }
-    if (category_id) {
-      where.category_id = category_id;
-    }
+const where = {};
+if (search) {
+  where.name = { [Op.iLike]: `%${search}%` };
+}
+if (category_id) {
+  where.category_id = category_id;
+}
 
-    const { count, rows } = await Product.findAndCountAll({
-      where,
-      include: [
-        {
-          model: Category,
-          as: 'category',
-          attributes: ['id', 'unique_id', 'name'],
-          ...(search && !category_id
-            ? {
-                where: {
-                  [Op.or]: [{ name: { [Op.like]: `%${search}%` } }],
-                },
-                required: false,
-              }
-            : {}),
-        },
-      ],
-      order: [[safeSort, safeOrder]],
-      limit: parseInt(limit),
-      offset,
-    });
+const { count, rows } = await Product.findAndCountAll({
+  where,
+  include: [
+    {
+      model: Category,
+      as: 'category',
+      attributes: ['id', 'unique_id', 'name'],
+      ...(search && !category_id
+        ? {
+            where: {
+              [Op.or]: [{ name: { [Op.iLike]: `%${search}%` } }],
+            },
+            required: false,
+          }
+        : {}),
+    },
+  ],
+  order: [[safeSort, safeOrder]],
+  limit: parseInt(limit),
+  offset,
+});
 
     res.json({
       success: true,

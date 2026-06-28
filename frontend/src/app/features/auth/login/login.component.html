@@ -1,0 +1,25 @@
+<div class="auth-container">
+  <mat-card>
+    <mat-card-title>Augmont Gold Tech</mat-card-title>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" type="email" placeholder="you@example.com">
+        <mat-error>Enter a valid email</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password" type="password">
+        <mat-error>Password is required</mat-error>
+      </mat-form-field>
+
+      <p class="error" *ngIf="error">{{ error }}</p>
+
+      <button mat-raised-button color="primary" type="submit" [disabled]="loading" style="width:100%">
+        {{ loading ? 'Logging in...' : 'Login' }}
+      </button>
+      <a routerLink="/register">Don't have an account? Register</a>
+    </form>
+  </mat-card>
+</div>

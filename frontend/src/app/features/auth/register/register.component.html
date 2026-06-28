@@ -1,0 +1,31 @@
+<div class="auth-container">
+  <mat-card>
+    <mat-card-title>Create Account</mat-card-title>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Full Name</mat-label>
+        <input matInput formControlName="name">
+        <mat-error>Name is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" type="email">
+        <mat-error>Enter a valid email</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password" type="password">
+        <mat-error>Minimum 6 characters</mat-error>
+      </mat-form-field>
+
+      <p class="error" *ngIf="error">{{ error }}</p>
+
+      <button mat-raised-button color="primary" type="submit" [disabled]="loading" style="width:100%">
+        {{ loading ? 'Creating account...' : 'Register' }}
+      </button>
+      <a routerLink="/login">Already have an account? Login</a>
+    </form>
+  </mat-card>
+</div>

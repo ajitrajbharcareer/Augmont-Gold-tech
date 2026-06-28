@@ -1,0 +1,8 @@
+.page-container { padding: 24px; }
+.page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+.full-width { width: 100%; }
+.loading-row { padding: 16px; text-align: center; color: #888; }
+.no-data { padding: 24px; text-align: center; color: #888; }
+.badge { padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 500; }
+.badge.active { background: #e8f5e9; color: #2e7d32; }
+.badge.inactive { background: #fce4ec; color: #c62828; }

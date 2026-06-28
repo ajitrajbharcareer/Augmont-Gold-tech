@@ -1,0 +1,10 @@
+<mat-toolbar color="primary" *ngIf="auth.isLoggedIn">
+  <span>🥇 Augmont Gold Tech</span>
+  <span style="flex:1"></span>
+  <nav class="nav-toolbar">
+    <a mat-button routerLink="/products" routerLinkActive="mat-accent">Products</a>
+    <a mat-button routerLink="/categories" routerLinkActive="mat-accent">Categories</a>
+  </nav>
+  <button mat-button (click)="logout()">Logout</button>
+</mat-toolbar>
+<router-outlet></router-outlet>
